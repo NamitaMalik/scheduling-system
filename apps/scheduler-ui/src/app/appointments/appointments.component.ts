@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppointmentsDataService } from './appointments-data.service';
 
 @Component({
   selector: 'scheduling-system-appointments',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppointmentsComponent {
 
+  constructor(private appointmentsDataService: AppointmentsDataService) {
+    this.getAppointments();
+  }
+
+
+  getAppointments() {
+    this.appointmentsDataService.getAppointments().subscribe((data) => {
+      console.log(data);
+    })
+  }
 }
