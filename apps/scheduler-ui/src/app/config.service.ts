@@ -12,15 +12,17 @@ import { APP_CONFIG_PATH, DEFAULT_APP_CONFIG } from './app.constant';
 })
 export class ConfigService {
   constructor(private router: Router, private http: HttpClient) {}
-  apiEndPointUrl: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  appConfig: BehaviorSubject<AppConfig> = new BehaviorSubject<AppConfig>(
+    DEFAULT_APP_CONFIG
+  );
 
   getConfig(): Promise<AppConfig> {
-   return this.http
+    return this.http
       .get<AppConfig>(APP_CONFIG_PATH)
       .toPromise()
-      .then((appConfig: AppConfig = DEFAULT_APP_CONFIG) =>  {
-          this.apiEndPointUrl.next(appConfig.apiEndPointUrl)
-          return appConfig;
+      .then((appConfig: AppConfig = DEFAULT_APP_CONFIG) => {
+        this.appConfig.next(appConfig);
+        return appConfig;
       });
   }
 }

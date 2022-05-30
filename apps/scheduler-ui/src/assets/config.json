@@ -1,3 +1,7 @@
 {
-  "apiEndPointUrl": "/api"
+  "apiEndPointUrl": "/api",
+  "auth": {
+    "headerKey": "key",
+    "headerValue": "E9658970-8A7E-4821-9335-6DCEAA3AC061"
+  }
 }
