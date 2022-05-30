@@ -14,10 +14,10 @@ export class AppInterceptor implements HttpInterceptor {
   private _appConfig!: AppConfig;
   constructor(private configService: ConfigService) {}
   intercept(
-    req: HttpRequest<any>,
+    req: HttpRequest<unknown>,
     next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    this._appConfig = this.configService.appConfig.value;
+  ): Observable<HttpEvent<unknown>> {
+    this._appConfig = this.configService.getAppConfig();
     let modifiedRequest = req.clone();
     if (!req.url.includes('/assets')) {
       modifiedRequest = req.clone({
