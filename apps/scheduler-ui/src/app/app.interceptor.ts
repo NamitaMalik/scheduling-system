@@ -18,13 +18,14 @@ export class AppInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     this._apiEndPointUrl = this.configService.apiEndPointUrl.value;
     let modifiedRequest = req.clone();
-    console.log(req.url);
     if (!req.url.includes('/assets')) {
-      console.log(this._apiEndPointUrl);
       modifiedRequest = req.clone({
         ...modifiedRequest,
         url: `${this._apiEndPointUrl}${modifiedRequest.url}`,
-        headers: req.headers.append('key', 'E9658970-8A7E-4821-9335-6DCEAA3AC061')
+        headers: req.headers.append(
+          'key',
+          'E9658970-8A7E-4821-9335-6DCEAA3AC061'
+        ),
       });
     }
     return next.handle(modifiedRequest);
