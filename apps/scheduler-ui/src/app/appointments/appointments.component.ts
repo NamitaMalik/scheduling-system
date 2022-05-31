@@ -18,14 +18,14 @@ export class AppointmentsComponent {
     this.appointmentsDataService
       .getAppointments()
       .pipe(
-        map((appointments) => {
-          return appointments.map((appointment) => ({
+        map((appointments) =>
+          appointments.map((appointment) => ({
             end: appointment.endTime,
             id: appointment.email,
             start: appointment.startTime,
             title: appointment.name,
-          }));
-        })
+          }))
+        )
       )
       .subscribe((events) => {
         this.options = {
