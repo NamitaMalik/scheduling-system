@@ -6,3 +6,10 @@ export interface Appointment {
   endTime: string;
   date: string;
 }
+
+export interface CalendarEvent {
+  end: string,
+  id: string,
+  start: string,
+  title: string,
+}
